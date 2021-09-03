@@ -8,6 +8,7 @@ import ProductList from '../../components/ProductList/ProductList';
 import { fetchProducts } from '../../features/products/actions/products';
 import { addProduct } from '../../features/products/actions/cart';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
+import ModalBody from '../../components/Modalbody/ModalBody';
 // import { getAllProductsSelector } from '../../features/products/selectors';
 
 const Home: React.FC = () => {
@@ -77,7 +78,7 @@ const Home: React.FC = () => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        FAcundo
+        <ModalBody />
       </Modal>
     </>
   );
