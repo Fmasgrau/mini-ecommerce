@@ -1,16 +1,24 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "./Navbar.scss";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Navbar.scss';
 
-const Navbar: React.FC = () => (
+interface INavbarProps {
+  onClick: () => void;
+}
+
+const Navbar = ({ onClick }: INavbarProps): JSX.Element => (
   <nav>
     <div>
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className="button__icon">
+            <i className="fa fa-home" />
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/about">About</NavLink>
+          <button className="button__icon" type="button" onClick={onClick}>
+            <i className="fa fa-shopping-cart" />
+          </button>
         </li>
       </ul>
     </div>

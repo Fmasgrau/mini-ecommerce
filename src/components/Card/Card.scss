@@ -1,0 +1,49 @@
+.card {
+  background-color: lightblue;
+  width: fit-content;
+  display: grid;
+  grid-template-areas:
+    'title title'
+    'imagen imagen'
+    'type price'
+    'cart cart';
+  height: 250px;
+  width: 180px;
+  border-radius: 5%;
+}
+
+.card__title {
+  grid-area: title;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+
+.card__img {
+  grid-area: imagen;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+  img {
+    max-height: 100px;
+  }
+}
+
+.card__price {
+  grid-area: price;
+  display: flex;
+  justify-content: center;
+}
+
+.card__type {
+  grid-area: type;
+  display: flex;
+  justify-content: center;
+}
+
+.card__cart {
+  grid-area: cart;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
