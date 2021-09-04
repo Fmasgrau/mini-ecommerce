@@ -1,0 +1,107 @@
+.form_checkout {
+  width: 100%;
+  padding: 10px;
+}
+
+.form_checkout__container {
+  max-width: 800px;
+  height: auto;
+  margin: 100px auto;
+  background: #fff;
+  padding: 20px 40px 30px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 7px solid #5ed2db;
+
+  .section-1 .items .input,
+  .section-2 .items .input,
+  .section-3 .items .input {
+    background: transparent;
+    border: 2px solid #bdbdbd;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: #000;
+    border-radius: 3px;
+  }
+}
+
+.form_checkout__title {
+  color: #000;
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.form_checkout__inputs {
+  margin-bottom: 20px;
+  .label {
+    display: block;
+    font-size: 1em;
+    color: #212121;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+  }
+  .items {
+    margin-bottom: 20px;
+  }
+  .section-3 {
+    display: flex;
+    justify-content: space-between;
+  }
+  .section-3 .items {
+    width: 48%;
+  }
+}
+
+.btn {
+  background: #5ed2db;
+  color: #fff;
+  font-size: 1.25em;
+  padding: 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.cvc {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.cvc .tooltip {
+  color: #d4d4d4;
+  border: 2px solid #d4d4d4;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cvc .cvc-img {
+  position: absolute;
+  top: -300%;
+  right: 0;
+  background: #5f6c7d;
+  padding: 12px;
+  border-radius: 5px;
+  display: none;
+}
+
+.cvc .cvc-img img {
+  width: 100px;
+  height: auto;
+  display: block;
+}
+
+.cvc:hover .cvc-img {
+  display: block;
+}

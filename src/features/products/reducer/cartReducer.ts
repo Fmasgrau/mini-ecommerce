@@ -1,49 +1,47 @@
 /* eslint-disable no-param-reassign */
-import { createReducer } from '@reduxjs/toolkit'
-import { addProduct, deleteProduct } from '../actions/cart'
+import { createReducer } from '@reduxjs/toolkit';
+import { addProduct, deleteProduct, removeProduct } from '../actions/cart';
 
 interface IProductList {
-    id: string,
-    name: string,
-    imgSrc: string,
-    price: number,
-    quantity: number
+    id: string;
+    name: string;
+    imgSrc: string;
+    price: number;
+    quantity: number;
 }
 
 interface IinitialState {
-    products: IProductList[]
+    products: IProductList[];
 }
 
 const initialState: IinitialState = {
-    products: []
-}
+    products: [],
+};
 
-
-const productsReducer = createReducer(initialState, builder =>
+const cartReducer = createReducer(initialState, (builder) =>
     builder
         .addCase(addProduct, (state, action) => {
-            const { id: productId } = action.payload
-            const isInArray = state.products.some(res => res.id === productId)
-            let newArray: any[] = [...state.products]
+            const { id: productId } = action.payload;
+            const isInArray = state.products.find((res) => res.id === productId);
+
             if (isInArray) {
-                newArray = state.products.map(p => {
-                    if (productId === p.id) {
-                        return { ...p, quantity: p.quantity + 1 }
-                    }
-                    return p
-                })
+                isInArray.quantity += 1;
             } else {
-                newArray.push(action.payload)
+                state.products.push(action.payload);
             }
-            state.products = newArray
-
-
         })
         .addCase(deleteProduct, (state, action) => {
-            // TO DO
-            state.products.filter(res => action.payload === res.id)
+            const product = state.products.find((res) => action.payload === res.id);
+            if (product && product.quantity >= 1) {
+                product.quantity -= 1;
+            }
         })
-)
 
-export default productsReducer
+        .addCase(removeProduct, (state, action) => {
+            state.products = state.products.filter(
+                (res) => action.payload !== res.id
+            );
+        })
+);
 
+export default cartReducer;

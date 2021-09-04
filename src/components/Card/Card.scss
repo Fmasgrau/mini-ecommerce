@@ -1,5 +1,12 @@
 .card {
-  background-color: lightblue;
+  // background: linear-gradient(
+  //   163deg,
+  //   rgba(255, 255, 255, 1) 0%,
+  //   rgba(13, 179, 242, 1) 53%,
+  //   rgba(11, 184, 244, 1) 67%,
+  //   rgba(0, 212, 255, 1) 100%
+  // );
+  background-color: #5ed2db;
   width: fit-content;
   display: grid;
   grid-template-areas:
@@ -17,6 +24,7 @@
   display: flex;
   justify-content: center;
   padding: 5%;
+  font-size: 24px;
 }
 
 .card__img {
@@ -46,4 +54,18 @@
   display: flex;
   justify-content: center;
   padding: 5%;
+}
+
+.button__add_product {
+  background-color: #f26144;
+  border: none;
+  border-radius: 10%;
+  padding: 5% 10%;
+  color: white;
+  &:hover {
+    background-color: red;
+  }
+  &:active {
+    background-color: black;
+  }
 }

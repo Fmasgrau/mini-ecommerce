@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ADD_PRODUCT, DELETE_PRODUCT } from './types'
+import { ADD_PRODUCT, DELETE_PRODUCT, REMOVE_PRODUCT } from './types'
 
 interface IProductList {
     id: string,
@@ -12,3 +12,5 @@ interface IProductList {
 export const addProduct = createAction<IProductList>(ADD_PRODUCT)
 
 export const deleteProduct = createAction<string>(DELETE_PRODUCT)
+
+export const removeProduct = createAction<string>(REMOVE_PRODUCT)
