@@ -141,7 +141,9 @@ const Home: React.FC = () => {
         }
         body={
           <>
-            <ProductList>{showTenProducts}</ProductList>
+            <ProductList>
+              {products?.length > 0 ? showTenProducts : <div>No data</div>}
+            </ProductList>
           </>
         }
       />

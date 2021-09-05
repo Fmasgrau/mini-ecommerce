@@ -15,6 +15,7 @@
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "axios": "^0.21.1",
+    "cypress": "^8.3.1",
     "eslint": "^7.29.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-node": "^4.1.0",
@@ -47,7 +48,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
-    "fix": "eslint --ext .js,.jsx,.ts,.tsx  --fix ./"
+    "fix": "eslint --ext .js,.jsx,.ts,.tsx  --fix ./",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
