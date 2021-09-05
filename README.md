@@ -4,6 +4,8 @@
 
 This application is a mini ecommerce that you can simulate shopping using the amiibo API.
 
+You can see a live demo deployed in AWS EC2 t3a.nano
+
 [Live Demo!](http://3.235.42.66)
 
 ## Checkout
