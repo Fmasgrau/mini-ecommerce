@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import Logo from '../../assets/img/logomercat.png';
-import ModalBody from '../Modalbody/ModalBody';
 
 interface INavbarProps {
   onClick: () => void;

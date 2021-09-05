@@ -9,6 +9,10 @@ import Layout from '../../components/Layout/Layout';
 import Navbar from '../../components/Navbar/Navbar';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { deleteAllCart } from '../../features/products/actions/cart';
+import {
+  regexCardPattern,
+  regexExpireDatePattern,
+} from '../../utils/FormValidation';
 
 export default function Checkout() {
   const history = useHistory();
@@ -35,22 +39,16 @@ export default function Checkout() {
     setCvc(target.value);
   };
 
+  const handleBack = () => {
+    history.push('/');
+  };
+
   const cartProducts = useAppSelector((state: any) => state.cart.products);
 
   const TotalProduct = cartProducts.reduce(
     (price: any, current: any) => price + current.price * current.quantity,
     0
   );
-
-  const QuantityProducts = cartProducts.reduce(
-    (quantity: any, current: any) => quantity + current.quantity,
-    0
-  );
-
-  const regexCardPattern =
-    /(^4[0-9]{12}(?:[0-9]{3})?$)|(^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$)|(3[47][0-9]{13})|(^3(?:0[0-5]|[68][0-9])[0-9]{11}$)|(^6(?:011|5[0-9]{2})[0-9]{12}$)|(^(?:2131|1800|35\d{3})\d{11}$)/;
-
-  const regexExpireDatePattern = new RegExp('(0[1-9]|10|11|12)/[0-9]{2}$');
 
   const checkoutSchema = yup.object().shape({
     card_number: yup
@@ -119,7 +117,7 @@ export default function Checkout() {
     <Layout
       navbar={
         <Navbar
-          onClick={() => history.push('/')}
+          onClick={handleBack}
           icon={
             <>
               <i className="fa fa-home" />

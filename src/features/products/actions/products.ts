@@ -7,13 +7,7 @@ export const fetchProducts = createAsyncThunk(FETCH_PRODUCTS, async () => {
         const { amiibo: value } = await ProductService.getProducts()
         return value
     } catch (e) {
-        console.log("error al traer datos")
-        // Swal.fire({
-        //     icon: 'error',
-        //     title: 'Bing',
-        //     text: 'Something went wrong!',
-        //     footer: 'Please try again!'
-        // })
+        // console.log("error al traer datos")
         return []
     }
 })

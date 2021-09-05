@@ -10,7 +10,7 @@ beforeEach(() =>
       imgAlt="TestImage"
       price={1}
       type="Card"
-      onClick={() => console.log('pepe')}
+      onClick={() => true}
       buttonText="ButtonTest"
     />
   )

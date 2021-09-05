@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'react-modal';
 import Card from '../../components/Card/Card';
 import Layout from '../../components/Layout/Layout';
 import Navbar from '../../components/Navbar/Navbar';
@@ -15,7 +14,6 @@ import {
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import ModalBody from '../../components/Modalbody/ModalBody';
 import ModalProducts from '../../components/Modalbody/ModalProducts';
-// import { getAllProductsSelector } from '../../features/products/selectors';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -51,6 +49,10 @@ const Home: React.FC = () => {
     setModalIsOpen(false);
   }
 
+  const openModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
+
   const addOneItem = (data: any) => {
     dispatch(addProduct({ ...data }));
   };
@@ -68,6 +70,7 @@ const Home: React.FC = () => {
   };
 
   const products = useAppSelector((state: any) =>
+    // I can't get just a few items from the API so I decided to make this slice
     state.products.products.slice(250, 280)
   );
 
@@ -115,7 +118,7 @@ const Home: React.FC = () => {
       <Layout
         navbar={
           <Navbar
-            onClick={() => setModalIsOpen(!modalIsOpen)}
+            onClick={openModal}
             icon={
               <>
                 <i className="fa fa-shopping-cart" />
