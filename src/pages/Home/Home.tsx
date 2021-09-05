@@ -124,16 +124,8 @@ const Home: React.FC = () => {
           <Navbar
             onClick={() => setModalIsOpen(!modalIsOpen)}
             quantity={QuantityProducts}
-          />
-        }
-        body={
-          <>
-            <ProductList>{showTenProducts}</ProductList>
-            <Modal
-              isOpen={modalIsOpen}
-              onAfterOpen={afterOpenModal}
-              onRequestClose={closeModal}
-            >
+            isEnabled={modalIsOpen}
+            modalbody={
               <ModalBody
                 header="List of products"
                 total={TotalProduct}
@@ -145,7 +137,12 @@ const Home: React.FC = () => {
                   <div className="modal_body__no_items">No items to show</div>
                 )}
               </ModalBody>
-            </Modal>
+            }
+          />
+        }
+        body={
+          <>
+            <ProductList>{showTenProducts}</ProductList>
           </>
         }
       />

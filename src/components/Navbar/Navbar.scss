@@ -46,3 +46,11 @@ ul {
     position: absolute;
   }
 }
+
+.cart__menu {
+  z-index: 10;
+  height: auto;
+  position: absolute;
+  display: flex;
+  right: 0;
+}

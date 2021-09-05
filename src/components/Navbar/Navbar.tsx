@@ -2,13 +2,21 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import Logo from '../../assets/img/logomercat.png';
+import ModalBody from '../Modalbody/ModalBody';
 
 interface INavbarProps {
   onClick: () => void;
   quantity: number;
+  modalbody?: JSX.Element;
+  isEnabled?: boolean;
 }
 
-const Navbar = ({ onClick, quantity }: INavbarProps): JSX.Element => (
+const Navbar = ({
+  onClick,
+  quantity,
+  modalbody,
+  isEnabled,
+}: INavbarProps): JSX.Element => (
   <nav>
     <div>
       <ul>
@@ -26,7 +34,13 @@ const Navbar = ({ onClick, quantity }: INavbarProps): JSX.Element => (
         </li>
       </ul>
     </div>
+    {isEnabled && <div className="cart__menu">{modalbody}</div>}
   </nav>
 );
+
+Navbar.defaultProps = {
+  modalbody: <></>,
+  isEnabled: false,
+};
 
 export default Navbar;

@@ -1,22 +1,28 @@
 .modal_body__container {
   background-color: white;
-  min-width: 250px;
+  width: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  flex: 1;
-  height: 100%;
-  margin: 5%;
+  //overflow-y: scroll;
+  // flex: 1;
+  max-height: 600px;
+  //margin: 5%;
+  border: 3px black solid;
+  border-top: none;
+  border-bottom-left-radius: 2%;
+  border-bottom-right-radius: 2%;
 }
 
 .modal_body__header {
   // background-color: lightcoral;
+  //min-height: 150px;
   font-size: 2em;
   font-weight: bold;
   font-variant: small-caps;
-  margin: 5%;
-  min-width: 250px;
+  margin-top: 5%;
+  // min-width: 250px;
   display: flex;
   justify-content: center;
 }
@@ -32,9 +38,12 @@
 }
 
 .modal_body__body {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
+  margin-top: 2%;
   // background-color: lightgreen;
   // border: 1px solid black;
+  max-height: 400px;
+  overflow-y: auto;
   display: flex;
   min-width: 500px;
   flex-direction: column;
@@ -65,7 +74,7 @@
 }
 
 .modal_body__checkout {
-  background-color: lightpink;
+  //background-color: lightpink;
   min-width: 250px;
   display: flex;
   justify-content: center;
