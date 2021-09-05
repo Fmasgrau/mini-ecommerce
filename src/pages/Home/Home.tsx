@@ -26,11 +26,26 @@ const Home: React.FC = () => {
   }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
+  const cartProducts = useAppSelector((state: any) => state.cart.products);
+
+  const QuantityProducts = cartProducts.reduce(
+    (quantity: any, current: any) => quantity + current.quantity,
+    0
+  );
+
+  const handleDisabled = () => {
+    if (QuantityProducts > 0) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  };
+
+  useEffect(() => {
+    handleDisabled();
+  }, [cartProducts]);
 
   function closeModal() {
     setModalIsOpen(false);
@@ -52,27 +67,9 @@ const Home: React.FC = () => {
     history.push('/checkout');
   };
 
-  // const customStyles = {
-  //   content: {
-  //     width: 600,
-  //     display: 'flex',
-  //     justifyContent: 'center',
-  //     top: '9%',
-  //     left: '50%',
-  //     // right: '5%',
-  //     // // bottom: '10%',
-  //     // // marginRight: '-50%',
-  //     // // transform: 'translate(-50%, -50%)',
-  //     // paddingRigth: 1,
-  //     // paddingBottom: 10,
-  //   },
-  // };
-
   const products = useAppSelector((state: any) =>
     state.products.products.slice(250, 280)
   );
-
-  const cartProducts = useAppSelector((state: any) => state.cart.products);
 
   const showTenProducts = products.map((res: any) => (
     <Card
@@ -99,6 +96,7 @@ const Home: React.FC = () => {
 
   const showModalProducts = cartProducts.map((p: any) => (
     <ModalProducts
+      key={p.id}
       product={p.name}
       quantity={p.quantity}
       handleAdd={() => addOneItem({ ...p })}
@@ -112,24 +110,25 @@ const Home: React.FC = () => {
     0
   );
 
-  const QuantityProducts = cartProducts.reduce(
-    (quantity: any, current: any) => quantity + current.quantity,
-    0
-  );
-
   return (
     <>
       <Layout
         navbar={
           <Navbar
             onClick={() => setModalIsOpen(!modalIsOpen)}
-            quantity={QuantityProducts}
+            icon={
+              <>
+                <i className="fa fa-shopping-cart" />
+                <span>{QuantityProducts}</span>
+              </>
+            }
             isEnabled={modalIsOpen}
             modalbody={
               <ModalBody
                 header="List of products"
                 total={TotalProduct}
                 checkout={handleCheckout}
+                disabled={isDisabled}
               >
                 {cartProducts.length > 0 ? (
                   showModalProducts

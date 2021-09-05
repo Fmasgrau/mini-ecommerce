@@ -7,10 +7,12 @@ import FormCheckout from '../../components/Form/FormCheckout';
 import Input from '../../components/Input/Input';
 import Layout from '../../components/Layout/Layout';
 import Navbar from '../../components/Navbar/Navbar';
-import { useAppSelector } from '../../state/hooks';
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
+import { deleteAllCart } from '../../features/products/actions/cart';
 
 export default function Checkout() {
   const history = useHistory();
+  const dispatch = useAppDispatch();
 
   const [cardNumber, setCardNumber] = useState('');
   const [cardHolder, setCardHolder] = useState('');
@@ -73,6 +75,8 @@ export default function Checkout() {
       })
       .then((valid) => {
         if (valid) {
+          localStorage.removeItem('state');
+          dispatch(deleteAllCart());
           Swal.fire({
             title: 'Transaction completed',
             icon: 'success',
@@ -85,7 +89,7 @@ export default function Checkout() {
               no-repeat
             `,
             confirmButtonColor: '#5ed2db',
-            confirmButtonText: 'Go to home',
+            confirmButtonText: 'Go home',
           }).then((isConfirmed) => {
             if (isConfirmed) {
               history.push('/');
@@ -114,7 +118,14 @@ export default function Checkout() {
   return (
     <Layout
       navbar={
-        <Navbar onClick={() => history.push('/')} quantity={QuantityProducts} />
+        <Navbar
+          onClick={() => history.push('/')}
+          icon={
+            <>
+              <i className="fa fa-home" />
+            </>
+          }
+        />
       }
       body={
         <FormCheckout

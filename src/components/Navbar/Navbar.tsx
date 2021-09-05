@@ -6,16 +6,16 @@ import ModalBody from '../Modalbody/ModalBody';
 
 interface INavbarProps {
   onClick: () => void;
-  quantity: number;
   modalbody?: JSX.Element;
   isEnabled?: boolean;
+  icon: JSX.Element;
 }
 
 const Navbar = ({
   onClick,
-  quantity,
   modalbody,
   isEnabled,
+  icon,
 }: INavbarProps): JSX.Element => (
   <nav>
     <div>
@@ -28,8 +28,7 @@ const Navbar = ({
         </li>
         <li>
           <button className="button__icon" type="button" onClick={onClick}>
-            <i className="fa fa-shopping-cart" />
-            <span>{quantity}</span>
+            {icon}
           </button>
         </li>
       </ul>

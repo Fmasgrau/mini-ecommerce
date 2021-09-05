@@ -6,6 +6,7 @@ interface IModalbodyProps {
   total: number;
   children: JSX.Element;
   checkout: () => void;
+  disabled: boolean;
 }
 
 export default function ModalBody({
@@ -13,6 +14,7 @@ export default function ModalBody({
   total,
   children,
   checkout,
+  disabled,
 }: IModalbodyProps): JSX.Element {
   return (
     <>
@@ -24,7 +26,7 @@ export default function ModalBody({
           <p>{total}</p>
         </div>
         <div className="modal_body__checkout">
-          <button type="button" onClick={checkout}>
+          <button type="button" onClick={checkout} disabled={disabled}>
             Checkout
           </button>
         </div>

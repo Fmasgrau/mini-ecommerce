@@ -97,6 +97,10 @@
     &:active {
       background-color: red;
     }
+    &:disabled {
+      background-color: #ebebe4;
+      color: grey;
+    }
   }
 }
 

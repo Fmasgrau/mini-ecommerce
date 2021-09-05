@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from '@reduxjs/toolkit';
-import { addProduct, deleteProduct, removeProduct } from '../actions/cart';
+import { addProduct, deleteProduct, removeProduct, deleteAllCart } from '../actions/cart';
 
 interface IProductList {
     id: string;
@@ -41,6 +41,9 @@ const cartReducer = createReducer(initialState, (builder) =>
             state.products = state.products.filter(
                 (res) => action.payload !== res.id
             );
+        })
+        .addCase(deleteAllCart, (state) => {
+            state.products = []
         })
 );
 
