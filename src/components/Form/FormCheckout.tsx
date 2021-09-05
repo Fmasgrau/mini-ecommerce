@@ -40,12 +40,13 @@ export default function FormCheckout({
             <div className="items">{cvc}</div>
           </div>
         </div>
-
-        <button
-          type="button"
-          className="btn"
-          onClick={handleClick}
-        >{`${confirmButtonText} $${price}`}</button>
+        <div className="form_checkout__proceed">
+          <button
+            type="button"
+            className="btn"
+            onClick={handleClick}
+          >{`${confirmButtonText} $${price}`}</button>
+        </div>
       </div>
     </div>
   );
