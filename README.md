@@ -2,7 +2,7 @@
 
 ![mercatcommerce](https://user-images.githubusercontent.com/40182366/132134063-4e280237-f1f3-4320-a7bf-b2cc3a9ad44a.png)
 
-This application is a mini ecommerce that you can simulate shopping cards from the API amiibo.
+This application is a mini ecommerce that you can simulate shopping  using the amiibo API.
 
 [Live Demo!](http://3.235.42.66)
 
